@@ -9,19 +9,27 @@ import { useAppContext } from '@/context/AppContext'
 import { STATUS_OPTIONS, STATUS_BAR_COLORS, PRIORITY_COLORS, type TaskStatus } from '@/types'
 import type { AppTask } from '@/types'
 
-// ── GANTT WINDOW: April 1 → August 31, 2026 ─────────────────────
-const WIN_START  = new Date(2026, 3, 1)
-const WIN_END    = new Date(2026, 7, 31)
+// ── GANTT WINDOW: dynamic 6-month window centered on today ───────
+const _today     = new Date()
+const WIN_START  = new Date(_today.getFullYear(), _today.getMonth() - 1, 1)
+const WIN_END    = new Date(_today.getFullYear(), _today.getMonth() + 4, 30)
 const TOTAL_DAYS = differenceInDays(WIN_END, WIN_START)
-const TODAY      = new Date(2026, 4, 15)
+const TODAY      = _today
 
-const MONTHS = [
-  { label: 'Abril',  days: 30, short: 'Abr' },
-  { label: 'Mayo',   days: 31, short: 'May' },
-  { label: 'Junio',  days: 30, short: 'Jun' },
-  { label: 'Julio',  days: 31, short: 'Jul' },
-  { label: 'Agosto', days: 31, short: 'Ago' },
-]
+function getMonths() {
+  const months = []
+  const cur = new Date(WIN_START)
+  while (cur < WIN_END) {
+    const y = cur.getFullYear()
+    const m = cur.getMonth()
+    const days = new Date(y, m + 1, 0).getDate()
+    const labels = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+    months.push({ short: labels[m], days })
+    cur.setMonth(m + 1)
+  }
+  return months
+}
+const MONTHS = getMonths()
 
 const LABEL_W    = 220
 const TIMELINE_H = 44
@@ -252,14 +260,17 @@ export function GanttChart({ filterClientId, filterAssigneeNames, compact = fals
             ) : (
               <div
                 key={`l-${row.dt.raw.id}`}
-                className="flex items-center gap-2 pl-7 pr-3 border-b border-slate-50 hover:bg-slate-50/60 transition-colors"
+                className={cn(
+                  'flex items-center gap-2 pl-7 pr-3 border-b border-slate-50 hover:bg-slate-50/60 transition-colors',
+                  row.dt.raw.status === 'blocked' && 'bg-red-50/40',
+                )}
                 style={{ height: TASK_H }}
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                   style={{ background: PRIORITY_COLORS[row.dt.raw.priority] }}
                 />
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <p className="text-[11px] font-semibold text-slate-700 truncate leading-snug">{row.dt.raw.title}</p>
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <div
@@ -269,6 +280,12 @@ export function GanttChart({ filterClientId, filterAssigneeNames, compact = fals
                       {row.dt.assigneeInitials[0]}
                     </div>
                     <span className="text-[10px] text-slate-400 truncate">{row.dt.raw.assignee}</span>
+                    {row.dt.raw.status === 'blocked' && (
+                      <span className="text-[9px] font-bold text-red-500 bg-red-100 px-1 py-0.5 rounded ml-1 flex-shrink-0">⛔ bloqueada</span>
+                    )}
+                    {row.dt.raw.dependsOnId && row.dt.raw.status !== 'blocked' && (
+                      <span className="text-[9px] font-bold text-amber-500 bg-amber-50 px-1 py-0.5 rounded ml-1 flex-shrink-0">↳ dep.</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -359,9 +376,13 @@ export function GanttChart({ filterClientId, filterAssigneeNames, compact = fals
                       {dt.raw.status === 'in_progress' && (
                         <div className="absolute inset-0 animate-shimmer" />
                       )}
+                      {dt.raw.status === 'blocked' && (
+                        <div className="absolute inset-0 opacity-30"
+                          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 0, transparent 50%)', backgroundSize: '8px 8px' }} />
+                      )}
                       {widthPct > 6 && (
                         <span className="text-[10px] font-bold text-white/90 px-2 truncate leading-none drop-shadow-sm">
-                          {dt.raw.title.split(' ').slice(0, 3).join(' ')}
+                          {dt.raw.status === 'blocked' ? '⛔ ' : ''}{dt.raw.title.split(' ').slice(0, 3).join(' ')}
                         </span>
                       )}
                     </button>
