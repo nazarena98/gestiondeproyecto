@@ -78,7 +78,7 @@ function TareasContent() {
   const { appTasks, openNewTask, openEditTask, activeUser, teamMembers, clients } = useAppContext()
   const searchParams = useSearchParams()
 
-  const [roleFilter,   setRoleFilter]   = useState<string>('mine')
+  const [roleFilter,   setRoleFilter]   = useState<string>('all')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [clientFilter, setClientFilter] = useState<string>('all')
 
