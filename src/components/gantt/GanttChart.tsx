@@ -165,7 +165,11 @@ export function GanttChart({ filterClientId, filterAssigneeNames, compact = fals
   function handleBarClick(taskId: string, e: React.MouseEvent) {
     e.stopPropagation()
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
-    setActiveTaskId({ id: taskId, x: rect.left, y: rect.bottom + 6 })
+    const menuH = 280
+    const y = rect.bottom + 6 + menuH > window.innerHeight
+      ? rect.top - menuH - 6
+      : rect.bottom + 6
+    setActiveTaskId({ id: taskId, x: rect.left, y })
   }
 
   function handleStatusSelect(status: TaskStatus) {
@@ -378,7 +382,7 @@ export function GanttChart({ filterClientId, filterAssigneeNames, compact = fals
       </div>
 
       {/* Legend */}
-      <div className="px-5 py-3 border-t border-slate-100 flex items-center gap-5 flex-wrap">
+      <div className="px-5 py-3 border-t border-slate-100 flex items-center gap-4 overflow-x-auto flex-nowrap">
         {STATUS_OPTIONS.filter(s => s.value !== 'cancelled').map(s => (
           <div key={s.value} className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-sm" style={{ background: STATUS_BAR_COLORS[s.value] }} />

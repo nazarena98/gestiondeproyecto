@@ -135,7 +135,7 @@ export function Sidebar() {
           {/* Active user pill */}
           <button
             onClick={() => setShowUserMenu(v => !v)}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.05] cursor-pointer transition-colors"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-white/10 hover:bg-white/[0.08] cursor-pointer transition-colors"
           >
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0"
@@ -145,7 +145,7 @@ export function Sidebar() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-white text-[13px] font-semibold truncate text-left">{activeUser.name}</p>
-              <p className="text-white/40 text-[11px] truncate text-left">{activeUser.role}</p>
+              <p className="text-white/40 text-[11px] truncate text-left">Cambiar usuario ↑</p>
             </div>
             <ChevronUp
               size={13}
