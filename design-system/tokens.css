@@ -1,0 +1,218 @@
+/**
+ * PPM Agencia — Design System Tokens
+ * Tipografía: Montserrat (Google Fonts)
+ * Sistema semántico de colores para gestión de proyectos de agencia digital
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+:root {
+
+  /* ═══════════════════════════════════════════════
+     BRAND
+  ═══════════════════════════════════════════════ */
+  --brand-primary:      #5046E5;  /* Electric Indigo — acción, activo, seleccionado */
+  --brand-primary-hover:#4338CA;
+  --brand-primary-light:#EEF2FF;  /* Fondos de badges activos */
+  --brand-primary-dark: #3730A3;
+  --brand-secondary:    #7C3AED;  /* Violet — en revisión, acciones secundarias */
+  --brand-accent:       #06B6D4;  /* Cyan — highlights, links, info */
+
+
+  /* ═══════════════════════════════════════════════
+     BACKGROUNDS
+  ═══════════════════════════════════════════════ */
+  --bg-canvas:          #F0F2F7;  /* Fondo general de la app */
+  --bg-surface:         #FFFFFF;  /* Cards, paneles, modales */
+  --bg-surface-raised:  #F8FAFC;  /* Tabla rows alt, inputs */
+  --bg-overlay:         rgba(15, 23, 42, 0.50);
+
+  /* Sidebar */
+  --bg-sidebar:         #12152A;  /* Deep Navy — barra lateral */
+  --bg-sidebar-hover:   #1E2242;
+  --bg-sidebar-active:  #5046E5;  /* Brand en ítem activo */
+  --bg-sidebar-border:  rgba(255, 255, 255, 0.08);
+
+
+  /* ═══════════════════════════════════════════════
+     TEXT
+  ═══════════════════════════════════════════════ */
+  --text-primary:        #0F172A;  /* Headings, labels críticos */
+  --text-secondary:      #475569;  /* Body, descripciones */
+  --text-muted:          #94A3B8;  /* Placeholders, timestamps */
+  --text-disabled:       #CBD5E1;
+
+  --text-on-brand:       #FFFFFF;
+  --text-on-dark:        #F1F5F9;  /* Texto sobre sidebar */
+  --text-on-dark-muted:  #64748B;  /* Texto muted sobre sidebar */
+
+  --text-link:           #5046E5;
+  --text-link-hover:     #4338CA;
+
+
+  /* ═══════════════════════════════════════════════
+     BORDERS
+  ═══════════════════════════════════════════════ */
+  --border-default:      #E2E8F0;
+  --border-muted:        #F1F5F9;
+  --border-strong:       #CBD5E1;
+  --border-brand:        #5046E5;
+  --border-danger:       #FCA5A5;
+  --border-warning:      #FCD34D;
+
+
+  /* ═══════════════════════════════════════════════
+     TASK STATUS — Sistema semántico de estados
+  ═══════════════════════════════════════════════ */
+
+  /* Pendiente — gris neutro, sin urgencia */
+  --status-pending:         #94A3B8;
+  --status-pending-bg:      #F8FAFC;
+  --status-pending-border:  #E2E8F0;
+
+  /* En progreso — azul, movimiento activo */
+  --status-in-progress:        #3B82F6;
+  --status-in-progress-bg:     #EFF6FF;
+  --status-in-progress-border: #BFDBFE;
+
+  /* Esperando cliente — ámbar, atención necesaria */
+  --status-waiting:         #F59E0B;
+  --status-waiting-bg:      #FFFBEB;
+  --status-waiting-border:  #FDE68A;
+
+  /* Bloqueada — rojo, crítico, acción inmediata */
+  --status-blocked:         #EF4444;
+  --status-blocked-bg:      #FEF2F2;
+  --status-blocked-border:  #FECACA;
+
+  /* En revisión — violeta, esperando aprobación */
+  --status-in-review:        #8B5CF6;
+  --status-in-review-bg:     #F5F3FF;
+  --status-in-review-border: #DDD6FE;
+
+  /* Completada — verde, éxito */
+  --status-completed:        #10B981;
+  --status-completed-bg:     #ECFDF5;
+  --status-completed-border: #A7F3D0;
+
+  /* Cancelada — gris opaco */
+  --status-cancelled:        #6B7280;
+  --status-cancelled-bg:     #F9FAFB;
+  --status-cancelled-border: #E5E7EB;
+
+
+  /* ═══════════════════════════════════════════════
+     PRIORITY
+  ═══════════════════════════════════════════════ */
+  --priority-critical:   #EF4444;  /* Rojo */
+  --priority-high:       #F97316;  /* Naranja */
+  --priority-medium:     #F59E0B;  /* Ámbar */
+  --priority-low:        #94A3B8;  /* Gris */
+
+
+  /* ═══════════════════════════════════════════════
+     SEMANTIC FEEDBACK
+  ═══════════════════════════════════════════════ */
+  --semantic-success:    #10B981;
+  --semantic-success-bg: #ECFDF5;
+  --semantic-warning:    #F59E0B;
+  --semantic-warning-bg: #FFFBEB;
+  --semantic-danger:     #EF4444;
+  --semantic-danger-bg:  #FEF2F2;
+  --semantic-info:       #3B82F6;
+  --semantic-info-bg:    #EFF6FF;
+
+
+  /* ═══════════════════════════════════════════════
+     CLIENT PALETTE — Colores únicos por cliente
+     Usados en Gantt, Calendario y Badges
+  ═══════════════════════════════════════════════ */
+  --client-color-1: #6366F1;  /* Indigo */
+  --client-color-2: #EC4899;  /* Pink */
+  --client-color-3: #10B981;  /* Emerald */
+  --client-color-4: #F59E0B;  /* Amber */
+  --client-color-5: #06B6D4;  /* Cyan */
+  --client-color-6: #8B5CF6;  /* Violet */
+  --client-color-7: #F97316;  /* Orange */
+  --client-color-8: #14B8A6;  /* Teal */
+
+
+  /* ═══════════════════════════════════════════════
+     TYPOGRAPHY — Montserrat
+  ═══════════════════════════════════════════════ */
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+  /* Escala tipográfica */
+  --type-display:   700  2.25rem/1.2  var(--font-sans);   /* 36px — Títulos de página grandes */
+  --type-h1:        700  1.75rem/1.25 var(--font-sans);   /* 28px — Títulos de sección */
+  --type-h2:        700  1.375rem/1.3 var(--font-sans);   /* 22px — Subtítulos */
+  --type-h3:        600  1.125rem/1.4 var(--font-sans);   /* 18px — Card headers */
+  --type-h4:        600  0.9375rem/1.5 var(--font-sans);  /* 15px — Labels grandes */
+  --type-body-lg:   400  1rem/1.6     var(--font-sans);   /* 16px — Body principal */
+  --type-body:      400  0.875rem/1.6 var(--font-sans);   /* 14px — Body estándar */
+  --type-body-sm:   400  0.8125rem/1.5 var(--font-sans);  /* 13px — Body pequeño */
+  --type-caption:   400  0.75rem/1.4  var(--font-sans);   /* 12px — Metadata, timestamps */
+  --type-label:     600  0.6875rem/1  var(--font-sans);   /* 11px — Labels uppercase */
+
+  /* Letter spacing para labels */
+  --tracking-label: 0.06em;
+  --tracking-wide:  0.04em;
+
+
+  /* ═══════════════════════════════════════════════
+     SPACING — Base 4px
+  ═══════════════════════════════════════════════ */
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+
+
+  /* ═══════════════════════════════════════════════
+     BORDER RADIUS
+  ═══════════════════════════════════════════════ */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+
+  /* ═══════════════════════════════════════════════
+     SHADOWS
+  ═══════════════════════════════════════════════ */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:  0 10px 25px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+  --shadow-xl:  0 20px 40px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06);
+  --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.06);
+
+  /* Colored glows */
+  --shadow-brand: 0 0 0 3px rgba(80, 70, 229, 0.15);
+  --shadow-danger: 0 0 0 3px rgba(239, 68, 68, 0.15);
+
+
+  /* ═══════════════════════════════════════════════
+     TRANSITIONS
+  ═══════════════════════════════════════════════ */
+  --transition-fast:   100ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow:   300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* ═══════════════════════════════════════════════
+     LAYOUT
+  ═══════════════════════════════════════════════ */
+  --sidebar-width:           256px;
+  --sidebar-collapsed-width: 64px;
+  --topbar-height:           64px;
+  --content-max-width:       1400px;
+}

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PATH -split ';' | Where-Object { $_ -match 'node|npm' })",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); Set-Location \"c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA\"; npx tsc --noEmit 2>&1 | Select-Object -First 40)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); Set-Location \"c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA\"; $proc = Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -PassThru -WindowStyle Minimized; Start-Sleep -Seconds 12; try { $r = Invoke-WebRequest \"http://localhost:3000\" -TimeoutSec 10 -UseBasicParsing; \"✓ HTTP $\\($r.StatusCode\\) — App corriendo en http://localhost:3000\" } catch { \"Iniciando... \\($\\($_.Exception.Message.Substring\\(0,[Math]::Min\\(80,$_.Exception.Message.Length\\)\\)\\)\\)\" })",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); try { $r = Invoke-WebRequest \"http://localhost:3000\" -TimeoutSec 5 -UseBasicParsing; \"Corriendo — HTTP $\\($r.StatusCode\\)\" } catch { \"No responde en 3000\" })",
+      "PowerShell(Start-Sleep -Seconds 2; $env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); try { $r = Invoke-WebRequest \"http://localhost:3000/dashboard\" -TimeoutSec 8 -UseBasicParsing; \"ACTIVO — HTTP $\\($r.StatusCode\\)\" } catch { \"ERROR: $\\($_.Exception.Message\\)\" })",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA\\\\src\\\\components\\\\modal\")"
+    ]
+  }
+}

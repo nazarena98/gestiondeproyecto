@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Program Files/nodejs/**)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); node --version; npm --version)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); Set-Location \"c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA\"; npm install 2>&1 | Select-Object -Last 10)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); Set-Location \"c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA\"; Start-Process powershell -ArgumentList \"-NoProfile -Command `\"cd 'c:\\\\Users\\\\nachi\\\\Documents\\\\TopicoseconomiaNAZARENA'; `$env:PATH = [System.Environment]::GetEnvironmentVariable\\('PATH','Machine'\\) + ';' + [System.Environment]::GetEnvironmentVariable\\('PATH','User'\\); npm run dev`\"\" -WindowStyle Normal; Start-Sleep -Seconds 8; Write-Host \"Servidor iniciado en background\")",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); try { $r = Invoke-WebRequest \"http://localhost:3000\" -TimeoutSec 5 -UseBasicParsing; \"ACTIVO\" } catch { \"APAGADO\" })",
+      "Read(//c/Users/nachi/AppData/Local/GitHubDesktop/**)"
+    ]
+  }
+}

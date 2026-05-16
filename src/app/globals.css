@@ -1,0 +1,153 @@
+@import '../../design-system/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  h1 { font: var(--type-h1); }
+  h2 { font: var(--type-h2); }
+  h3 { font: var(--type-h3); }
+  h4 { font: var(--type-h4); }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+}
+
+@layer components {
+  /* ── STATUS BADGES ── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .badge-pending       { background: var(--status-pending-bg);     color: var(--status-pending);     border: 1px solid var(--status-pending-border); }
+  .badge-in-progress   { background: var(--status-in-progress-bg); color: var(--status-in-progress); border: 1px solid var(--status-in-progress-border); }
+  .badge-waiting       { background: var(--status-waiting-bg);     color: var(--status-waiting);     border: 1px solid var(--status-waiting-border); }
+  .badge-blocked       { background: var(--status-blocked-bg);     color: var(--status-blocked);     border: 1px solid var(--status-blocked-border); }
+  .badge-in-review     { background: var(--status-in-review-bg);   color: var(--status-in-review);   border: 1px solid var(--status-in-review-border); }
+  .badge-completed     { background: var(--status-completed-bg);   color: var(--status-completed);   border: 1px solid var(--status-completed-border); }
+  .badge-cancelled     { background: var(--status-cancelled-bg);   color: var(--status-cancelled);   border: 1px solid var(--status-cancelled-border); }
+
+  /* ── CARDS ── */
+  .card {
+    @apply bg-white rounded-xl border border-slate-100 shadow-card;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-px transition-all duration-200;
+  }
+
+  /* ── PRIORITY DOTS ── */
+  .priority-dot {
+    @apply w-2 h-2 rounded-full flex-shrink-0;
+  }
+  .priority-critical { background: var(--priority-critical); }
+  .priority-high     { background: var(--priority-high); }
+  .priority-medium   { background: var(--priority-medium); }
+  .priority-low      { background: var(--priority-low); }
+
+  /* ── GANTT BARS ── */
+  .gantt-bar {
+    @apply relative h-6 rounded overflow-hidden;
+  }
+  .gantt-bar-track {
+    @apply absolute inset-0 rounded opacity-20;
+  }
+  .gantt-bar-fill {
+    @apply absolute inset-y-0 left-0 rounded transition-all duration-500;
+  }
+
+  /* ── AVATAR ── */
+  .avatar {
+    @apply flex-shrink-0 rounded-full flex items-center justify-center font-bold text-white select-none;
+  }
+  .avatar-sm  { @apply w-7 h-7 text-[10px]; }
+  .avatar-md  { @apply w-8 h-8 text-xs; }
+  .avatar-lg  { @apply w-10 h-10 text-sm; }
+}
+
+@layer utilities {
+  .text-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+/* ── RICH TEXT EDITOR ── */
+.rich-editor:empty::before {
+  content: attr(data-placeholder);
+  color: #94A3B8;
+  pointer-events: none;
+  display: block;
+}
+.rich-editor h2 { font-size: 15px; font-weight: 700; color: #1E293B; margin: 8px 0 2px; }
+.rich-editor h3 { font-size: 13px; font-weight: 700; color: #334155; margin: 6px 0 2px; }
+.rich-editor p  { margin: 2px 0; }
+.rich-editor ul { padding-left: 1.5rem; margin: 2px 0; list-style-type: disc; }
+.rich-editor ol { padding-left: 1.5rem; margin: 2px 0; list-style-type: decimal; }
+.rich-editor li { margin: 1px 0; }
+.rich-editor img { max-width: 100%; max-height: 300px; border-radius: 8px; margin: 4px 0; display: block; }
+.rich-editor strong { font-weight: 700; }
+.rich-editor em { font-style: italic; }
+
+/* ── TASK HIGHLIGHT ── */
+@keyframes task-highlight {
+  0%   { background: #EEF2FF; }
+  70%  { background: #EEF2FF; }
+  100% { background: transparent; }
+}
+.task-highlighted { animation: task-highlight 2.5s ease-out forwards; }
+
+/* ── TOAST & GANTT ANIMATIONS ── */
+@keyframes toast-slide-in {
+  from { transform: translateX(calc(100% + 16px)); opacity: 0; }
+  to   { transform: translateX(0);                  opacity: 1; }
+}
+@keyframes toast-slide-out {
+  from { transform: translateX(0);                  opacity: 1; }
+  to   { transform: translateX(calc(100% + 16px)); opacity: 0; }
+}
+@keyframes progress-shrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
+}
+
+/* Additional status badge variants */
+.badge-approved   { background: var(--status-completed-bg);   color: var(--status-completed);   border: 1px solid var(--status-completed-border); }
+.badge-correction { background: #FFF7ED; color: #F97316; border: 1px solid #FED7AA; }
